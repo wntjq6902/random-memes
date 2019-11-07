@@ -12,4 +12,4 @@ Keybinds (can be changed manually)
 |slowwalk|shift|
 |fakeduck|x|
 
-# password: contect ERRORNAME#6974
+# password: contact ERRORNAME#6974
