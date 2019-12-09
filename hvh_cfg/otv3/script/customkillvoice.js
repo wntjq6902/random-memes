@@ -1,6 +1,7 @@
 UI.AddLabel("==Custom Kill Voice==");
 UI.AddCheckbox("Enable Custom Kill Voice");
 UI.AddCheckbox("Loopback");
+UI.AddTextbox("Sound Name");
 UI.AddSliderFloat("Sound Length", 0.0, 10.0);
 UI.AddLabel("====================");
 
@@ -21,13 +22,11 @@ function PlayVoice()
 
     started = Global.Realtime();
     playing = true;
-    Global.ExecuteCommand("voice_inputfromfile 1");
     if (GetScriptOption("Loopback"))
     {
         Global.ExecuteCommand("voice_loopback 1");
     }
-    Global.ExecuteCommand("-voicerecord");
-    Global.ExecuteCommand("+voicerecord");
+    Sound.PlayMicrophone('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\' + UI.GetString("Misc", "JAVASCRIPT", "Script Items", "Sound Name"));
 }
 
 function Reset()
@@ -35,8 +34,7 @@ function Reset()
     if (playing && Math.abs(started + GetScriptOption("Sound Length") - Global.Realtime()) < 0.05)
     {
         playing = false;
-        Global.ExecuteCommand("-voicerecord");
-        Global.ExecuteCommand("voice_inputfromfile 0");
+        Sound.StopMicrophone();
         Global.ExecuteCommand("voice_loopback 0");
     }
 }
