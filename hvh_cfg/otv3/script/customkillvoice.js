@@ -1,6 +1,8 @@
+UI.AddLabel("==Custom Kill Voice==");
 UI.AddCheckbox("Enable Custom Kill Voice");
 UI.AddCheckbox("Loopback");
 UI.AddSliderFloat("Sound Length", 0.0, 10.0);
+UI.AddLabel("====================");
 
 var playing = false;
 var started = 0.0
